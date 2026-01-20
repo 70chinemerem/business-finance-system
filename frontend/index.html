@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Dashboard</title>
+    <!-- icon scout -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.2.0/css/line.css">
+    <!-- css link -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- chart js -->
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+        <a href="index.html" class="side__logo">
+            <img src="css/assets/logo.png" alt="E-Commerce logo">
+            <h3>Pr<span>o</span>fi<span>ti</span>x</h3>
+        </a>
+        <menu class="sidebar__top">
+         <a href="index.html" class="active">
+           <i class="uil uil-create-dashboard"></i>
+           <h5>Dashboard</h5>
+         </a>
+        <a href="" >
+          <i class="uil uil-tag"></i>
+           <h5>Products</h5>
+         </a>
+              <a href="">
+           <i class="uil uil-th-large"></i>
+           <h5>Orders</h5>
+         </a>
+              <a href="" >
+           <i class="uil uil-users-alt"></i>
+           <h5>Customers</h5>
+         </a>
+              <a href="" >
+           <i class="uil uil-transaction"></i>
+           <h5>Payments / Transactions</h5>
+         </a>
+            <a href="" >
+           <i class="uil uil-chart-line"></i>
+           <h5>Analytics / Reports</h5>
+         </a>
+            <a href="">
+           <i class="uil uil-megaphone"></i>
+           <h5>Marketing</h5>
+         </a>
+        <a href="" >
+           <i class="uil uil-shopping-cart-alt"></i>
+           <h5>Shipping / Delivery</h5>
+         </a>
+        </menu>  
+
+        <menu class="sidebar__bottom">
+         <a href="">
+           <i class="uil uil-question-circle"></i>
+           <h5>Support</h5>
+         </a>
+        <a href="">
+          <i class="uil uil-setting"></i>
+           <h5>Settings</h5>
+         </a>
+              <a href="">
+           <i class="uil uil-signout"></i>
+           <h5>Logout</h5>
+         </a>
+        </menu>
+    </aside>
+
+     <button class="sidebar__toggle-open"><i class="uil uil-bars"></i></button>
+     <button class="sidebar__toggle-close"><i class="uil uil-multiply"></i></button>
+
+    <main>
+        <nav class="navbar">
+            <div class="navbar__search">
+                <i class="uil uil-search"></i>
+                <input type="search" placeholder="Search here...">
+                <i class="uil uil-microphone"></i>
+            </div>
+            <menu class="navbar__items">
+                <button class="navbar__btn">
+                  <i class="uil uil-moon"></i>
+                </button>
+                <button class="navbar__item">
+                    <i class="uil uil-bell"></i>
+                    <span>3</span>
+                </button>
+                 <button class="navbar__export">
+                   Export <i class="uil uil-export"></i>
+                </button>
+            </menu>
+        </nav>
+
+      <section class="main__wrapper">
+      <section class="main__left">
+        <h1>Overview</h1>
+        <menu class="cards">
+          <article class="card">
+            <h5>Products <span class="success">+100.0%</span></h5>
+            <h2>$100m+</h2>
+            <div>
+              <small>Vs. last month</small>
+              <small>110.2%</small>
+            </div>
+          </article>
+                    <article class="card">
+            <h5>Add To Cart <span class="success">+5.0%</span></h5>
+            <h2>$30.9m+</h2>
+            <div>
+              <small>Vs. last month</small>
+              <small>20.2%</small>
+            </div>
+          </article>
+                    <article class="card">
+            <h5>Checkouts <span class="danger">-50.0%</span></h5>
+            <h2>$25.4m</h2>
+            <div>
+              <small>Vs. last month</small>
+              <small>80.2%</small>
+            </div>
+          </article>
+                    <article class="card">
+            <h5>Shares <span class="success">+7.9%</span></h5>
+            <h2>$953.4k</h2>
+            <div>
+              <small>Vs. last month</small>
+              <small>90.2%</small>
+            </div>
+          </article>
+        </menu>
+
+        <canvas id="chart"></canvas>
+        <section class="topproducts">
+          <h3>Top Selling products</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Products</th>
+                <th>Stock</th>
+                <th>Price</th>
+                <th>Sales</th>
+                <th>Earnings</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div>
+                    <img src="css/assets/download.jpeg" alt="">
+                  </div>
+                   <p>shoes</p>
+                </td>
+                <td>200,400</td>
+                <td>$50.48</td>
+                <td>4,000</td>
+                <td>$10m+</td>
+                <td>+11.5%</td>
+              </tr>
+              <tr>
+                <td>
+                  <div>
+                    <img src="" alt="">
+                    <p>Your Products</p>
+                  </div>
+                </td>
+                <td>200,400</td>
+                <td>$50.48</td>
+                <td>4,000</td>
+                <td>$10m+</td>
+                <td>+11.5%</td>
+              </tr>
+              <tr>
+                <td>
+                  <div>
+                    <img src="" alt="">
+                    <p>Your Products</p>
+                  </div>
+                </td>
+                <td>200,400</td>
+                <td>$50.48</td>
+                <td>4,000</td>
+                <td>$10m+</td>
+                <td>+11.5%</td>
+              </tr>
+              <tr>
+                <td>
+                  <div>
+                    <img src="" alt="">
+                    <p>Your Products</p>
+                  </div>
+                </td>
+                <td>200,400</td>
+                <td>$50.48</td>
+                <td>4,000</td>
+                <td>$10m+</td>
+                <td>+11.5%</td>
+              </tr>
+              <tr>
+                <td>
+                  <div>
+                    <img src="" alt="">
+                    <p>Your Products</p>
+                  </div>
+                </td>
+                <td>200,400</td>
+                <td>$50.48</td>
+                <td>4,000</td>
+                <td>$10m+</td>
+                <td>+11.5%</td>
+              </tr>
+            </tbody>
+
+          </table>
+          <small>See more...</small>
+       
+        </section>
+
+      </section>
+      <section class="main__right">
+        <article class="topCategories">
+          <header>
+            <h4>Top Categories</h4>
+            <i class="uil uil-ellipsis-h"></i>          
+          </header>
+          <canvas id="categories"></canvas>
+          <ul>
+            <li>
+              <div>
+                <span></span>
+                <h5>cars</h5>
+              </div>
+              <h6>60.4%</h6>
+            </li>
+            <li>
+              <div>
+                <span></span>
+                <h5>truks</h5>
+              </div>
+              <h6>60.4%</h6>
+            </li>
+            <li>
+              <div>
+                <span></span>
+                <h5>electronics</h5>
+              </div>
+              <h6>60.4%</h6>
+            </li>
+            <li>
+              <div>
+                <span></span>
+                <h5>others</h5>
+              </div>
+              <h6>60.4%</h6>
+            </li>
+          </ul>
+          <button>Veiw Details <i class="uil uil-external-link-alt"></i></button>
+        </article>
+
+
+        <article class="nextevents">
+          <header>
+            <h4>Upcoming Events</h4>
+            <i class="uil uil-ellipsis-h"></i> 
+          </header>
+          <div class="next__eventimage">
+            <img src="css/assets/download.jpeg" alt="">
+          </div>
+          <ul>
+            <li>
+                <div class="Events__image">
+                  <img src="css/assets/download.jpeg" alt="">
+                </div>
+                <div>
+                  <h5>christmas</h5>
+                  <small></small>
+                </div>
+            </li>
+              <li>
+                <div class="Events__image">
+                  <img src="css/assets/download.jpeg" alt="">
+                </div>
+                <div>
+                  <h5>christmas</h5>
+                  <small></small>
+                </div>
+            </li>
+              <li>
+                <div class="Events__image">
+                  <img src="" alt="">
+                </div>
+                <div>
+                  <h5>christmas</h5>
+                  <small></small>
+                </div>
+            </li>
+          </ul>
+         <button>View Events  <i class="uil uil-external-link-alt"></i></button>
+        </article>
+      </section>
+      </section>
+    
+
+    </main>
+   </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="./css/main.js"></script>
+</body>
+</html>
