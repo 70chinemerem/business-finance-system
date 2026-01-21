@@ -1,33 +1,62 @@
 :root {
-  --bg-main: #e5e7eb;        /* page background */
-  --bg-card: #ffffff;        /* cards */
-  --bg-sidebar: #020617;     /* sidebar */
+  /* ===== BACKGROUNDS ===== */
+  --bg-main: #e5e7eb;
+  --bg-card: #ffffff;
+  --bg-sidebar: #020617;
   --bg-header: #ffffff;
-    --bg-top: #f9fafb;
-  --text-primary: #020617;   /* main text */
-  --text-secondary: #64748b; /* muted text */
+  --bg-top: #f9fafb;
+  --bg-hover: #f1f5f9;
+  --bg-mobile-sidebar: #f9fafb;
 
-  --border-color: #e5e7eb;
+  /* ===== TEXT ===== */
+  --text-primary: #020617;
+  --text-secondary: #64748b;
+  --text-inverse: #e5e7eb;
 
+  /* ===== BRAND / ACCENT ===== */
+  --primary: #6366f1;
+  --info: #2563eb;
+
+  /* ===== STATUS ===== */
   --success: #22c55e;
   --warning: #facc15;
   --danger: #ef4444;
+
+  /* ===== BORDERS & SHADOWS ===== */
+  --border-color: #d1d5db;
+  --shadow-card: 0 1rem 1rem rgba(0,0,0,0.15);
+  --shadow-soft: 0 0 1rem rgba(0,0,0,0.08);
+
+  /* ===== CARD GRADIENTS ===== */
+ --card-1: linear-gradient(135deg,#1b2f6b,#1a3f8b,#0b1d3a);
+  --card-2: linear-gradient(135deg, #334155, #020617);
+  --card-3: linear-gradient(135deg, #14532d, #022c22);
+  --card-4: linear-gradient(135deg, #78350f, #451a03);
+
+  --overlay-dark: rgba(0,0,0,0.6);
 }
+
 body.dark {
   --bg-main: #020617;
   --bg-card: #0f172a;
   --bg-sidebar: #020617;
   --bg-header: #020617;
-    --bg-top: #1e293b;
+  --bg-top: #1e293b;
+  --bg-hover: #1e293b;
+  --bg-mobile-sidebar: #020617;
+
   --text-primary: #e5e7eb;
   --text-secondary: #94a3b8;
+  --text-inverse: #020617;
+  --texts: #e5e7eb;
 
   --border-color: #1e293b;
+  --info: #60a5fa;
 
-  --success: #22c55e;
-  --warning: #facc15;
-  --danger: #ef4444;
+  --shadow-card: 0 1rem 1.5rem rgba(0,0,0,0.6);
+  --shadow-soft: 0 0 1rem rgba(156, 135, 135, 0.4);
 }
+
 body{
  font-family: 'Inter', sans-serif;
  font-size: 0.85rem;
@@ -37,6 +66,7 @@ body{
  gap: 1.5rem;
  max-width: 100vw;
  background: var(--bg-main);
+ color: var(--text-primary);
 }
 
 /* NEW */
@@ -110,7 +140,7 @@ h5{
 }
 .sidebar img{
     width: 3rem;
-    background: #ffffff;
+    background: var(--bg-card);
     border-radius: 10px;
 }
 .side__logo h3{
@@ -119,7 +149,7 @@ h5{
     font-weight: 700;
 }
 .side__logo h3 span{
-    color: purple;
+    color: var(--primary);
 }
 .sidebar__top, .sidebar__bottom{
     display: flex;
@@ -136,15 +166,15 @@ h5{
     
 }
 .sidebar__top a:hover, .sidebar__bottom a:hover{
-    background-color: #ffffff;
+    background-color: var(--bg-hover);
     transform: translateX(0.5rem);
 }
 .sidebar__top a i, .sidebar__bottom a i{
     font-size: 1rem;
-    color: #6B7280;
+    color: var(--text-secondary);
 }
 .sidebar__top a h5, .sidebar__bottom a h5{
-    color: #6B7280;
+    color: var(--text-secondary);
 }
 .sidebar__toggle-open, .sidebar__toggle-close{
       display: none;
@@ -153,12 +183,12 @@ h5{
 
 /* Permanent active link */
 .sidebar a.active {
-    color: purple;
+    color: var(--primary);
 }
 
 .sidebar a.active i,
 .sidebar a.active h5 {
-  color: purple;
+  color: var(--primary);
 }
 /* =============NAV-BAR============== */
 main{
@@ -172,7 +202,7 @@ main{
     
 }
 .navbar__search{
-    background: #ffffff;
+    background: var(--bg-card);
     width: 35rem;
     padding: 0.8rem;
     border-radius: 10px;
@@ -183,15 +213,19 @@ main{
 }
 .navbar__search input{
     width: 100%;
+    background: none;
+    color: white;
 }
+
+
 .navbar__items{
     display: flex;
     align-items: center;
     gap: 0.8rem;
 }
 .navbar__items button{
-    background: #ffffff;
-    color: #111827;
+    background: var(--bg-card);
+    color: var(--text-primary);
     padding: 0.8rem 1rem;
     border-radius: 0.5rem;
 }
@@ -218,8 +252,8 @@ h1{
     align-items: center;
 }
 .card{
-  background: linear-gradient(135deg, #1e3a8a, #0f172a);
-  color: #e5e7eb;
+  background: var(--card-1);
+  color: var(--text-inverse);
   border-radius: 10px;
     padding: 1rem 1.5rem;
   position: relative;
@@ -229,7 +263,7 @@ h1{
 } 
 .card:hover{
     transform: translateY(-5px);
-    box-shadow: 0 1rem 1rem #d1d5db;
+    box-shadow: var(--shadow-card);
 }
 
 .card::before{
@@ -240,7 +274,7 @@ h1{
     top: 15%;
     height: 140%;
     aspect-ratio: 1/1;
-    background: linear-gradient(115deg, black, transparent,transparent,transparent);
+    background: linear-gradient(115deg, var(--overlay-dark), transparent,transparent,transparent);
     border-radius: 50%;
     opacity: 0.2;
 }
@@ -252,21 +286,21 @@ h1{
     top: 15%;
     height: 70%;
     aspect-ratio: 1/1;
-    background: linear-gradient(115deg, black, transparent,transparent,transparent);
+    background: linear-gradient(115deg, var(--overlay-dark), transparent,transparent,transparent);
     border-radius: 50%;
     opacity: 0.2;
 }
 .card:nth-child(2){
-       background: linear-gradient(135deg, #334155, #020617);
-  color: #e5e7eb;
+       background: var(--card-2);
+  color: var(--text-inverse);
 }
 .card:nth-child(3){
-     background: linear-gradient(135deg, #14532d, #022c22);
-  color: #ecfdf5;
+     background: var(--card-3);
+  color: var();
 }
 .card:nth-child(4){
-  background: linear-gradient(135deg, #78350f, #451a03);
-  color: #fef3c7;
+  background: var(--card-4);
+  color: var(--text-inverse);
 }
 
 .card h5 span{
@@ -274,12 +308,17 @@ h1{
     font-size: 0.7rem;
 }
 .card h2{
+    color: #e5e7eb;
     margin: 1rem 0 1.8rem;
+}
+.card h5{
+    color: #e5e7eb;
 }
 .card div{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: var(--texts);
 }
 /* ==============overviewChart============== */
 #chart{
@@ -290,7 +329,7 @@ h1{
     height: 22rem;
    margin: 1rem 0;
 }
-/* ==============TOP PRODUCTS============== */
+/* ==============TABLE TOP PRODUCTS============== */
 .topproducts{
     background: var(--bg-card);
     padding: 1rem;
@@ -303,7 +342,7 @@ h1{
 }
 .topproducts table{
     width: 100%;
-    border-top: 1px solid #d1d5db;
+    border-top: 1px solid var(--border-color);
 }
 table tbody tr td:first-child{
     display: flex;
@@ -319,7 +358,7 @@ table tbody tr td{
 }
 table tbody tr:nth-child(odd){
     background: var(--bg-top);
-    color: #2563eb;
+    color: var(--info);
 }
 table tbody tr div{
     width: 2rem;
@@ -340,11 +379,12 @@ table thead th{
     transition: 3s ease;
 }
 .topproducts small:hover{
-    background: red;
+    background: var(--danger);
+    color: var(--text-inverse);
 }
 /* ==============TOP Categories============== */
 .topCategories{
-    background: #ffffff;
+    background: var(--bg-card);
     width: 100%;
     border-radius: 10px;
     margin: 1.5rem 0 1rem;
@@ -376,18 +416,18 @@ table thead th{
 .topCategories ul li span{
     width: 0.7rem;
     aspect-ratio: 1/1;
-    background: #b1b1b1;
+    background: var(--text-secondary);
     border-radius: 50%;
     display: block;
 }
 .topCategories ul li:nth-child(2) span {
-    background: purple;
+    background: var(--primary);
 }
 .topCategories ul li:nth-child(3) span {
     background: var(--success);
 }
 .topCategories ul li:nth-child(4) span{
-    background: yellow;
+    background: var(--warning);
 }
 .topCategories ul li div{
     display: flex;
@@ -400,12 +440,12 @@ table thead th{
     text-align: center;
     width: 100%;
     border-radius: 5px;
-    background: #f9fafb;
-    color: #020617;
+    background: var(--bg-top);
+    color: var(--text-primary);
 }
 /* ==============UPCOMING EVENTS============== */
 .nextevents{
-    background: #ffffff;
+    background: var(--bg-card);
     border-radius: 10px;
     padding: 1rem;
 }
@@ -431,7 +471,7 @@ table thead th{
     display: flex;
     gap: 1rem;
     align-items: center;
-    box-shadow: 0 0 1rem #f3f4f6;
+    box-shadow: 0 0 1rem var(--shadow-soft);
     padding: 0.5rem;
     border-radius: 10px;
 }
@@ -505,8 +545,8 @@ table thead th{
       top: 90vh;
       right: 2rem;
       border-radius: 10px;
-      background: #020617;
-      color: #ffffff;
+        background: var(--bg-sidebar);
+        color: white;
       font-size: 1.5rem;
        z-index: 2;
     }
@@ -514,8 +554,8 @@ table thead th{
         display: none;
     }
     .sidebar {
-        background: #f9fafb;
-        max-width: 15rem;
+        background: var(--bg-mobile-sidebar);
+        max-width: 15rem; 
         position: fixed;
         bottom: 0;
         left: -100%;
@@ -586,7 +626,7 @@ table thead th{
 .navbar__btn {
   padding: 0.8rem 1rem;
   border-radius: 50%;
-  background: #020617;
+  background: var(--bg-sidebar);
   border: none;
   cursor: pointer;
   display: grid;
@@ -595,7 +635,7 @@ table thead th{
 }
 
 body.dark .navbar__btn{
-  background:  #e5e7eb;
+  background:  var(--text-inverse);
 }
 .navbar__btn i {
   font-size: 1.1rem;
