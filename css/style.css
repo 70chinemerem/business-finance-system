@@ -400,6 +400,43 @@ main {
 
 .navbar__item {
     margin-left: 0.8rem;
+    position: relative;
+    padding: 0.8rem 1rem;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: none;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: all 0.3s ease;
+}
+
+.navbar__item:hover {
+    background: var(--bg-hover);
+    transform: scale(1.05);
+}
+
+.navbar__item i {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.navbar__item span {
+    position: absolute;
+    top: 0.3rem;
+    right: 0.3rem;
+    background: var(--danger);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.4rem;
+    border-radius: 10px;
+    min-width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--bg-header);
 }
 
 .navbar__business-select {
@@ -435,6 +472,11 @@ main {
 
 body.dark .navbar__btn {
     background: var(--text-inverse);
+}
+
+.navbar__btn:hover {
+    background: var(--primary) !important;
+    transform: scale(1.05);
 }
 
 .navbar__btn i {
@@ -857,53 +899,18 @@ table thead th {
         width: 3rem;
         aspect-ratio: 1/1;
         position: fixed;
-        top: 90vh;
-        right: 2rem;
+        bottom: 0.5rem; /* Position under theme switcher */
+        right: 1rem;
         border-radius: 10px;
         background: var(--bg-sidebar);
         color: white;
         font-size: 1.5rem;
-        z-index: 2;
+        z-index: 1001;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     .sidebar__toggle-close {
         display: none;
-    }
-
-    .sidebar {
-        background: var(--bg-mobile-sidebar);
-        max-width: 15rem;
-        position: fixed;
-        bottom: 0;
-        left: -100%;
-        box-shadow: 2rem -2rem 2rem rgba(0, 0, 0, 0.15);
-        height: fit-content;
-        width: 25rem;
-        border-radius: 10px;
-        z-index: 1;
-        transition: left 0.3s ease;
-    }
-
-    .sidebar.active {
-        left: 0;
-        /* show sidebar */
-    }
-
-    .sidebar a {
-        border-radius: 0;
-    }
-
-    .sidebar a:hover {
-        transform: translateX(0);
-    }
-
-    .sidebar__logo {
-        margin-bottom: 1rem;
-    }
-
-    .side__logo h3,
-    .sidebar h5 {
-        display: inline;
     }
 
     .navbar__search {
@@ -2662,41 +2669,47 @@ body.enhanced-design .stat-card:hover {
         min-height: auto;
     }
 
-    /* Sidebar - Bottom Navigation */
+    /* Sidebar - Slide-in Navigation */
     .sidebar {
-        width: 100%;
-        height: auto;
+        background: var(--bg-sidebar);
+        max-width: 15rem;
         position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        flex-direction: row;
-        padding: 0.5rem;
-        border-radius: 20px 20px 0 0;
-        box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.15);
+        top: 0;
+        left: -100%;
+        height: 100vh;
+        width: 15rem;
+        border-radius: 0 10px 10px 0;
+        box-shadow: 2rem 0 2rem rgba(0, 0, 0, 0.15);
         z-index: 1000;
-        max-height: 70px;
+        transition: left 0.3s ease;
+        flex-direction: column;
+        padding: 1.5rem 1rem;
+    }
+
+    .sidebar.active {
+        left: 0;
     }
 
     .sidebar__top,
     .sidebar__bottom {
-        flex-direction: row;
-        overflow-x: auto;
-        gap: 0.2rem;
-        flex: 1;
-        -webkit-overflow-scrolling: touch;
+        flex-direction: column;
+        gap: 0.5rem;
     }
 
     .sidebar a {
-        min-width: 55px;
-        flex-direction: column;
-        padding: 0.4rem 0.3rem;
-        text-align: center;
-        border-radius: 8px;
+        flex-direction: row;
+        padding: 0.9rem 1rem;
+        border-radius: 12px;
+        min-width: auto;
+        text-align: left;
     }
 
     .sidebar a i {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+    }
+
+    .sidebar h5 {
+        display: inline;
     }
 
     .sidebar h5 {
@@ -2707,7 +2720,12 @@ body.enhanced-design .stat-card:hover {
 
     .sidebar__logo,
     .side__logo {
-        display: none;
+        display: block;
+        margin-bottom: 2rem;
+    }
+
+    .side__logo h3 {
+        font-size: 1.2rem;
     }
 
     /* Main Content */
@@ -2749,6 +2767,16 @@ body.enhanced-design .stat-card:hover {
         width: 40px;
         height: 40px;
         padding: 0;
+        border-radius: 50%;
+    }
+
+    .navbar__item span {
+        top: 0.2rem;
+        right: 0.2rem;
+        font-size: 0.6rem;
+        padding: 0.15rem 0.3rem;
+        min-width: 16px;
+        height: 16px;
     }
 
     .navbar__export {
