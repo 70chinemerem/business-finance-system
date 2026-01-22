@@ -1716,7 +1716,7 @@ body.dark .navbar__btn i {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     z-index: 10000;
     overflow: hidden;
-    padding: 2rem 1rem; /* Add padding for content spacing */
+    padding: 2rem 1rem 6rem 1rem; /* Increased bottom padding for full scroll */
 }
 }
 
@@ -1793,7 +1793,7 @@ body.dark .navbar__btn i {
     max-width: 450px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     animation: slideUp 0.5s ease;
-    margin: 4rem auto 4rem auto; /* Center horizontally and add bottom margin for scroll */
+    margin: 4rem auto 8rem auto; /* Increased bottom margin for full scroll reach */
 }
 
 .login-header {
@@ -3181,6 +3181,7 @@ body.enhanced-design .stat-card:hover {
     scroll-behavior: auto; /* Start at top initially */
     scroll-margin-top: 0;
     scroll-snap-type: none; /* Disable snap initially */
+    scroll-padding-bottom: 2rem; /* Ensure bottom content is reachable */
 }
 
 .login-container::-webkit-scrollbar {
