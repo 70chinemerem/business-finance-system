@@ -5,7 +5,17 @@ const MAIN_APP = document.getElementById('mainApp');
 
 // Check authentication on page load
 function checkAuthentication() {
+  // Check for logout parameter in URL
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('logout') === 'true') {
+    logout();
+    // Remove the logout parameter from URL
+    window.history.replaceState({}, document.title, window.location.pathname);
+    return;
+  }
+  
   const isAuthenticated = localStorage.getItem(AUTH_KEY) === 'true';
+  console.log('Authentication check:', isAuthenticated ? 'logged in' : 'not logged in');
   
   if (isAuthenticated) {
     showMainApp();
@@ -47,6 +57,15 @@ function logout() {
 // Initialize authentication check
 checkAuthentication();
 
+// Add keyboard shortcut for testing (Ctrl+Shift+L to logout)
+document.addEventListener('keydown', (e) => {
+  if (e.ctrlKey && e.shiftKey && e.key === 'L') {
+    e.preventDefault();
+    logout();
+    alert('Logged out! Refresh the page to see login form.');
+  }
+});
+
 // ===== Login Form Handler =====
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
@@ -55,14 +74,20 @@ if (loginForm) {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     
+    console.log('Login attempt:', { email: email ? 'provided' : 'missing', password: password ? 'provided' : 'missing' });
+    
     // Simple validation (in production, validate with backend)
     if (email && password) {
+      console.log('Login successful, calling login()');
       // Simulate login (replace with actual API call)
       login();
     } else {
+      console.log('Login failed: missing email or password');
       alert('Please enter both email and password');
     }
   });
+} else {
+  console.error('Login form not found!');
 }
 
 // ===== Password Toggle =====
