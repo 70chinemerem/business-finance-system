@@ -1,310 +1,1184 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce Dashboard</title>
-    <!-- icon scout -->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.2.0/css/line.css">
-    <!-- css link -->
-    <link href="css/style.css" rel="stylesheet">
-    <!-- chart js -->
-</head>
-<body>
-  <div class="app">
-    <aside class="sidebar">
-        <a href="index.html" class="side__logo">
-            <img src="css/assets/logo.png" alt="E-Commerce logo">
-            <h3>Pr<span>o</span>fi<span>ti</span>x</h3>
-        </a>
-        <menu class="sidebar__top">
-         <a href="index.html" class="active">
-           <i class="uil uil-create-dashboard"></i>
-           <h5>Dashboard</h5>
-         </a>
-        <a href="" >
-          <i class="uil uil-tag"></i>
-           <h5>Products</h5>
-         </a>
-              <a href="">
-           <i class="uil uil-th-large"></i>
-           <h5>Orders</h5>
-         </a>
-              <a href="" >
-           <i class="uil uil-users-alt"></i>
-           <h5>Customers</h5>
-         </a>
-              <a href="" >
-           <i class="uil uil-transaction"></i>
-           <h5>Payments / Transactions</h5>
-         </a>
-            <a href="" >
-           <i class="uil uil-chart-line"></i>
-           <h5>Analytics / Reports</h5>
-         </a>
-            <a href="">
-           <i class="uil uil-megaphone"></i>
-           <h5>Marketing</h5>
-         </a>
-        <a href="" >
-           <i class="uil uil-shopping-cart-alt"></i>
-           <h5>Shipping / Delivery</h5>
-         </a>
-        </menu>  
 
-        <menu class="sidebar__bottom">
-         <a href="">
-           <i class="uil uil-question-circle"></i>
-           <h5>Support</h5>
-         </a>
-        <a href="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Commerce Dashboard</title>
+  <!-- icon scout -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.2.0/css/line.css">
+  <!-- css link -->
+  <link href="css/style.css" rel="stylesheet">
+  <!-- chart js -->
+</head>
+
+<body>
+  <!-- LOGIN SECTION -->
+  <div class="login-container" id="loginSection">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="login-logo">
+          <img src="css/assets/logo.png" alt="Profitix logo">
+          <h2>Pr<span>o</span>fi<span>ti</span>x</h2>
+        </div>
+        <p class="login-subtitle">Business Finance Management System</p>
+      </div>
+      
+      <form class="login-form" id="loginForm">
+        <div class="form-group">
+          <label for="email">
+            <i class="uil uil-envelope"></i> Email Address
+          </label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="password">
+            <i class="uil uil-lock"></i> Password
+          </label>
+          <div class="password-input-wrapper">
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            <button type="button" class="toggle-password" id="togglePassword">
+              <i class="uil uil-eye"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="form-options">
+          <label class="remember-me">
+            <input type="checkbox" id="rememberMe">
+            <span>Remember me</span>
+          </label>
+          <a href="#" class="forgot-password">Forgot Password?</a>
+        </div>
+        
+        <button type="submit" class="login-btn">
+          <i class="uil uil-signin"></i> Sign In
+        </button>
+        
+        <div class="login-divider">
+          <span>Or continue with</span>
+        </div>
+        
+        <div class="social-login">
+          <button type="button" class="social-btn google-btn">
+            <i class="uil uil-google"></i> Google
+          </button>
+          <button type="button" class="social-btn github-btn">
+            <i class="uil uil-github"></i> GitHub
+          </button>
+        </div>
+        
+        <p class="login-footer">
+          Don't have an account? <a href="#" id="showRegister">Sign Up</a>
+        </p>
+      </form>
+    </div>
+    
+    <div class="login-background">
+      <div class="bg-shape shape-1"></div>
+      <div class="bg-shape shape-2"></div>
+      <div class="bg-shape shape-3"></div>
+    </div>
+  </div>
+
+  <!-- MAIN APP (Hidden until login) -->
+  <div class="app" id="mainApp" style="display: none;">
+    <aside class="sidebar">
+      <a href="index.html" class="side__logo">
+        <img src="css/assets/logo.png" alt="E-Commerce logo">
+        <h3>Pr<span>o</span>fi<span>ti</span>x</h3>
+      </a>
+      <menu class="sidebar__top">
+        <a href="#" data-section="dashboard" class="nav-link active">
+          <i class="uil uil-create-dashboard"></i>
+          <h5>Dashboard</h5>
+        </a>
+        <a href="#" data-section="products" class="nav-link">
+          <i class="uil uil-tag"></i>
+          <h5>Products</h5>
+        </a>
+        <a href="#" data-section="orders" class="nav-link">
+          <i class="uil uil-th-large"></i>
+          <h5>Orders</h5>
+        </a>
+        <a href="#" data-section="customers" class="nav-link">
+          <i class="uil uil-users-alt"></i>
+          <h5>Customers</h5>
+        </a>
+        <a href="#" data-section="payments" class="nav-link">
+          <i class="uil uil-transaction"></i>
+          <h5>Payments / Transactions</h5>
+        </a>
+        <a href="#" data-section="analytics" class="nav-link">
+          <i class="uil uil-chart-line"></i>
+          <h5>Analytics / Reports</h5>
+        </a>
+        <a href="#" data-section="marketing" class="nav-link">
+          <i class="uil uil-megaphone"></i>
+          <h5>Marketing</h5>
+        </a>
+        <a href="#" data-section="shipping" class="nav-link">
+          <i class="uil uil-shopping-cart-alt"></i>
+          <h5>Shipping / Delivery</h5>
+        </a>
+      </menu>
+
+      <menu class="sidebar__bottom">
+        <a href="#" data-section="support" class="nav-link">
+          <i class="uil uil-question-circle"></i>
+          <h5>Support</h5>
+        </a>
+        <a href="#" data-section="settings" class="nav-link">
           <i class="uil uil-setting"></i>
-           <h5>Settings</h5>
-         </a>
-              <a href="">
-           <i class="uil uil-signout"></i>
-           <h5>Logout</h5>
-         </a>
-        </menu>
+          <h5>Settings</h5>
+        </a>
+        <a href="#" class="nav-link" id="logoutBtn">
+          <i class="uil uil-signout"></i>
+          <h5>Logout</h5>
+        </a>
+      </menu>
     </aside>
 
-     <button class="sidebar__toggle-open"><i class="uil uil-bars"></i></button>
-     <button class="sidebar__toggle-close"><i class="uil uil-multiply"></i></button>
+    <button class="sidebar__toggle-open"><i class="uil uil-bars"></i></button>
+    <button class="sidebar__toggle-close"><i class="uil uil-multiply"></i></button>
 
     <main>
-        <nav class="navbar">
-            <div class="navbar__search">
-                <i class="uil uil-search"></i>
-                <input type="search" placeholder="Search here...">
-                <i class="uil uil-microphone"></i>
-            </div>
-            <menu class="navbar__items">
-                <button class="navbar__btn">
-                  <i class="uil uil-moon"></i>
-                </button>
-                <button class="navbar__item">
-                    <i class="uil uil-bell"></i>
-                    <span>3</span>
-                </button>
-                 <button class="navbar__export">
-                   Export <i class="uil uil-export"></i>
-                </button>
-            </menu>
-        </nav>
-
-      <section class="main__wrapper">
-      <section class="main__left">
-        <h1>Overview</h1>
-        <menu class="cards">
-          <article class="card">
-            <h5>Products <span class="success">+100.0%</span></h5>
-            <h2>$100m+</h2>
-            <div>
-              <small>Vs. last month</small>
-              <small>110.2%</small>
-            </div>
-          </article>
-                    <article class="card">
-            <h5>Add To Cart <span class="success">+5.0%</span></h5>
-            <h2>$30.9m+</h2>
-            <div>
-              <small>Vs. last month</small>
-              <small>20.2%</small>
-            </div>
-          </article>
-                    <article class="card">
-            <h5>Checkouts <span class="danger">-50.0%</span></h5>
-            <h2>$25.4m</h2>
-            <div>
-              <small>Vs. last month</small>
-              <small>80.2%</small>
-            </div>
-          </article>
-                    <article class="card">
-            <h5>Shares <span class="success">+7.9%</span></h5>
-            <h2>$953.4k</h2>
-            <div>
-              <small>Vs. last month</small>
-              <small>90.2%</small>
-            </div>
-          </article>
+      <nav class="navbar">
+        <div class="navbar__search">
+          <i class="uil uil-search"></i>
+          <input type="search" placeholder="Search here..." id="globalSearch">
+          <i class="uil uil-microphone"></i>
+        </div>
+        <menu class="navbar__items">
+          <select id="businessSelect" class="navbar__business-select">
+            <option value="All">All Businesses</option>
+            <option value="Supermarket">Supermarket</option>
+            <option value="Wigs">Wigs</option>
+            <option value="Boutique">Boutique</option>
+          </select>
+          <button class="navbar__btn">
+            <i class="uil uil-moon"></i>
+          </button>
+          <button class="navbar__item">
+            <i class="uil uil-bell"></i>
+            <span>3</span>
+          </button>
+          <button class="navbar__export">
+            Export <i class="uil uil-export"></i>
+          </button>
         </menu>
+      </nav>
 
-        <canvas id="chart"></canvas>
-        <section class="topproducts">
-          <h3>Top Selling products</h3>
-          <table>
+      <!-- DASHBOARD SECTION -->
+      <section class="content-section" id="dashboard-section">
+        <section class="main__wrapper">
+          <section class="main__left">
+            <h1>Overview</h1>
+            <menu class="cards">
+              <article class="card" id="salesCard">
+                <h5>Total Sales <span class="success">+100.0%</span></h5>
+                <h2></h2> <!-- JS will fill this -->
+                <div>
+                  <small>Vs. last month</small>
+                  <small>110.2%</small>
+                </div>
+              </article>
+
+              <article class="card" id="expensesCard">
+                <h5>Expenses <span class="danger">-50.0%</span></h5>
+                <h2></h2>
+                <div>
+                  <small>Vs. last month</small>
+                  <small>110.2%</small>
+                </div>
+              </article>
+
+              <article class="card" id="profitCard">
+                <h5>Profit <span class="success">+7.9%</span></h5>
+                <h2></h2>
+                <div>
+                  <small>Vs. last month</small>
+                  <small>110.2%</small>
+                </div>
+              </article>
+
+              <article class="card" id="sharesCard">
+                <h5>Shares <span class="success">+7.9%</span></h5>
+                <h2></h2>
+                <div>
+                  <small>Vs. last month</small>
+                  <small>90.2%</small>
+                </div>
+              </article>
+            </menu>
+
+            <canvas id="chart"></canvas>
+            <section class="topproducts">
+              <h3>Top Selling products</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Products</th>
+                    <th>Stock</th>
+                    <th>Price</th>
+                    <th>Sales</th>
+                    <th>Earnings</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div>
+                        <img src="css/assets/download.jpeg" alt="">
+                      </div>
+                      <p>shoes</p>
+                    </td>
+                    <td>200,400</td>
+                    <td>$50.48</td>
+                    <td>4,000</td>
+                    <td>$10m+</td>
+                    <td>+11.5%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div>
+                        <img src="css/assets/download.jpeg" alt="Product">
+                        <p>Electronics</p>
+                      </div>
+                    </td>
+                    <td>150,200</td>
+                    <td>$75.99</td>
+                    <td>3,500</td>
+                    <td>$8.5m+</td>
+                    <td>+9.2%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div>
+                        <img src="css/assets/download.jpeg" alt="Product">
+                        <p>Accessories</p>
+                      </div>
+                    </td>
+                    <td>180,300</td>
+                    <td>$35.50</td>
+                    <td>5,200</td>
+                    <td>$12m+</td>
+                    <td>+15.8%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div>
+                        <img src="css/assets/download.jpeg" alt="Product">
+                        <p>Clothing</p>
+                      </div>
+                    </td>
+                    <td>120,100</td>
+                    <td>$45.75</td>
+                    <td>2,800</td>
+                    <td>$6.2m+</td>
+                    <td>+7.3%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div>
+                        <img src="css/assets/download.jpeg" alt="Product">
+                        <p>Home Goods</p>
+                      </div>
+                    </td>
+                    <td>95,500</td>
+                    <td>$62.25</td>
+                    <td>1,900</td>
+                    <td>$4.8m+</td>
+                    <td>+5.1%</td>
+                  </tr>
+                </tbody>
+
+              </table>
+              <small>See more...</small>
+
+            </section>
+
+          </section>
+          <section class="main__right">
+            <article class="topCategories">
+              <header>
+                <h4>Top Categories</h4>
+                <i class="uil uil-ellipsis-h"></i>
+              </header>
+
+              <div class="chart-container">
+                <canvas id="categories"></canvas>
+              </div>
+
+              <ul>
+                <li>
+                  <div><span></span>
+                    <h5>Cars</h5>
+                  </div>
+                  <h6>60.4%</h6>
+                </li>
+                <li>
+                  <div><span></span>
+                    <h5>Trucks</h5>
+                  </div>
+                  <h6>20.4%</h6>
+                </li>
+                <li>
+                  <div><span></span>
+                    <h5>Electronics</h5>
+                  </div>
+                  <h6>15.4%</h6>
+                </li>
+                <li>
+                  <div><span></span>
+                    <h5>Others</h5>
+                  </div>
+                  <h6>4%</h6>
+                </li>
+              </ul>
+              <button>Veiw Details <i class="uil uil-external-link-alt"></i></button>
+            </article>
+
+
+
+            <article class="nextevents">
+              <header>
+                <h4>Upcoming Events</h4>
+                <i class="uil uil-ellipsis-h"></i>
+              </header>
+              <div class="next__eventimage">
+                <img src="css/assets/download.jpeg" alt="">
+              </div>
+              <ul>
+                <li>
+                  <div class="Events__image">
+                    <img src="css/assets/download.jpeg" alt="Event">
+                  </div>
+                  <div>
+                    <h5>Christmas Sale</h5>
+                    <small>Dec 25, 2024</small>
+                  </div>
+                </li>
+                <li>
+                  <div class="Events__image">
+                    <img src="css/assets/download.jpeg" alt="Event">
+                  </div>
+                  <div>
+                    <h5>New Year Promotion</h5>
+                    <small>Jan 1, 2025</small>
+                  </div>
+                </li>
+                <li>
+                  <div class="Events__image">
+                    <img src="css/assets/download.jpeg" alt="Event">
+                  </div>
+                  <div>
+                    <h5>Valentine's Day</h5>
+                    <small>Feb 14, 2025</small>
+                  </div>
+                </li>
+              </ul>
+              <button>View Events <i class="uil uil-external-link-alt"></i></button>
+            </article>
+          </section>
+        </section>
+      </section>
+
+      <!-- PRODUCTS SECTION -->
+      <section class="content-section" id="products-section" style="display: none;">
+        <div class="section-header">
+          <h1>Products Management</h1>
+          <button class="btn-primary"><i class="uil uil-plus"></i> Add New Product</button>
+        </div>
+
+        <div class="products-filters">
+          <input type="search" placeholder="Search products..." class="search-input">
+          <select class="filter-select">
+            <option>All Categories</option>
+            <option>Electronics</option>
+            <option>Clothing</option>
+            <option>Accessories</option>
+            <option>Home Goods</option>
+          </select>
+          <select class="filter-select">
+            <option>All Status</option>
+            <option>In Stock</option>
+            <option>Out of Stock</option>
+            <option>Low Stock</option>
+          </select>
+        </div>
+
+        <div class="products-grid">
+          <div class="product-card">
+            <img src="css/assets/download.jpeg" alt="Product">
+            <div class="product-info">
+              <h4>Running Shoes</h4>
+              <p class="product-category">Footwear</p>
+              <div class="product-details">
+                <span class="price">$50.48</span>
+                <span class="stock">Stock: 200,400</span>
+              </div>
+              <div class="product-actions">
+                <button class="btn-edit"><i class="uil uil-edit"></i> Edit</button>
+                <button class="btn-delete"><i class="uil uil-trash"></i> Delete</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="css/assets/download.jpeg" alt="Product">
+            <div class="product-info">
+              <h4>Wireless Headphones</h4>
+              <p class="product-category">Electronics</p>
+              <div class="product-details">
+                <span class="price">$75.99</span>
+                <span class="stock">Stock: 150,200</span>
+              </div>
+              <div class="product-actions">
+                <button class="btn-edit"><i class="uil uil-edit"></i> Edit</button>
+                <button class="btn-delete"><i class="uil uil-trash"></i> Delete</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="css/assets/download.jpeg" alt="Product">
+            <div class="product-info">
+              <h4>Leather Watch</h4>
+              <p class="product-category">Accessories</p>
+              <div class="product-details">
+                <span class="price">$35.50</span>
+                <span class="stock">Stock: 180,300</span>
+              </div>
+              <div class="product-actions">
+                <button class="btn-edit"><i class="uil uil-edit"></i> Edit</button>
+                <button class="btn-delete"><i class="uil uil-trash"></i> Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Product Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Sales</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="table-product">
+                  <img src="css/assets/download.jpeg" alt="">
+                  <span>Running Shoes</span>
+                </div>
+              </td>
+              <td>Footwear</td>
+              <td>$50.48</td>
+              <td>200,400</td>
+              <td>4,000</td>
+              <td><span class="badge success">In Stock</span></td>
+              <td>
+                <button class="icon-btn"><i class="uil uil-edit"></i></button>
+                <button class="icon-btn"><i class="uil uil-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="table-product">
+                  <img src="css/assets/download.jpeg" alt="">
+                  <span>Wireless Headphones</span>
+                </div>
+              </td>
+              <td>Electronics</td>
+              <td>$75.99</td>
+              <td>150,200</td>
+              <td>3,500</td>
+              <td><span class="badge success">In Stock</span></td>
+              <td>
+                <button class="icon-btn"><i class="uil uil-edit"></i></button>
+                <button class="icon-btn"><i class="uil uil-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ORDERS SECTION -->
+      <section class="content-section" id="orders-section" style="display: none;">
+        <div class="section-header">
+          <h1>Orders Management</h1>
+          <div class="header-stats">
+            <div class="stat-card">
+              <h5>Total Orders</h5>
+              <h2>1,234</h2>
+            </div>
+            <div class="stat-card">
+              <h5>Pending</h5>
+              <h2>45</h2>
+            </div>
+            <div class="stat-card">
+              <h5>Completed</h5>
+              <h2>1,189</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="orders-filters">
+          <select class="filter-select">
+            <option>All Orders</option>
+            <option>Pending</option>
+            <option>Processing</option>
+            <option>Shipped</option>
+            <option>Delivered</option>
+            <option>Cancelled</option>
+          </select>
+          <input type="date" class="filter-select">
+          <input type="date" class="filter-select">
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Products</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#ORD-001</td>
+              <td>John Doe</td>
+              <td>3 items</td>
+              <td>2024-12-15</td>
+              <td>$250.00</td>
+              <td><span class="badge warning">Pending</span></td>
+              <td>
+                <button class="icon-btn"><i class="uil uil-eye"></i></button>
+                <button class="icon-btn"><i class="uil uil-edit"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td>#ORD-002</td>
+              <td>Jane Smith</td>
+              <td>2 items</td>
+              <td>2024-12-14</td>
+              <td>$150.00</td>
+              <td><span class="badge success">Delivered</span></td>
+              <td>
+                <button class="icon-btn"><i class="uil uil-eye"></i></button>
+                <button class="icon-btn"><i class="uil uil-edit"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td>#ORD-003</td>
+              <td>Mike Johnson</td>
+              <td>5 items</td>
+              <td>2024-12-13</td>
+              <td>$450.00</td>
+              <td><span class="badge info">Shipped</span></td>
+              <td>
+                <button class="icon-btn"><i class="uil uil-eye"></i></button>
+                <button class="icon-btn"><i class="uil uil-edit"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- CUSTOMERS SECTION -->
+      <section class="content-section" id="customers-section" style="display: none;">
+        <div class="section-header">
+          <h1>Customers Management</h1>
+          <button class="btn-primary"><i class="uil uil-user-plus"></i> Add Customer</button>
+        </div>
+
+        <div class="customers-stats">
+          <div class="stat-card">
+            <h5>Total Customers</h5>
+            <h2>5,432</h2>
+            <small>+12% from last month</small>
+          </div>
+          <div class="stat-card">
+            <h5>Active Customers</h5>
+            <h2>4,123</h2>
+            <small>76% of total</small>
+          </div>
+          <div class="stat-card">
+            <h5>New This Month</h5>
+            <h2>234</h2>
+            <small>+8% growth</small>
+          </div>
+        </div>
+
+        <div class="customers-filters">
+          <input type="search" placeholder="Search customers..." class="search-input">
+          <select class="filter-select">
+            <option>All Customers</option>
+            <option>Active</option>
+            <option>Inactive</option>
+            <option>VIP</option>
+          </select>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Customer</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Orders</th>
+              <th>Total Spent</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="table-customer">
+                  <div class="avatar">JD</div>
+                  <span>John Doe</span>
+                </div>
+              </td>
+              <td>john.doe@email.com</td>
+              <td>+1 234-567-8900</td>
+              <td>15</td>
+              <td>$2,450.00</td>
+              <td><span class="badge success">Active</span></td>
+              <td>
+                <button class="icon-btn"><i class="uil uil-eye"></i></button>
+                <button class="icon-btn"><i class="uil uil-edit"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="table-customer">
+                  <div class="avatar">JS</div>
+                  <span>Jane Smith</span>
+                </div>
+              </td>
+              <td>jane.smith@email.com</td>
+              <td>+1 234-567-8901</td>
+              <td>8</td>
+              <td>$1,200.00</td>
+              <td><span class="badge success">Active</span></td>
+              <td>
+                <button class="icon-btn"><i class="uil uil-eye"></i></button>
+                <button class="icon-btn"><i class="uil uil-edit"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- PAYMENTS/TRANSACTIONS SECTION -->
+      <section class="content-section" id="payments-section" style="display: none;">
+        <div class="section-header">
+          <h1>Payments & Transactions</h1>
+          <div class="header-stats">
+            <div class="stat-card">
+              <h5>Total Revenue</h5>
+              <h2>$125,450</h2>
+            </div>
+            <div class="stat-card">
+              <h5>This Month</h5>
+              <h2>$45,230</h2>
+            </div>
+            <div class="stat-card">
+              <h5>Pending</h5>
+              <h2>$5,400</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="transactions-filters">
+          <select class="filter-select">
+            <option>All Transactions</option>
+            <option>Sales</option>
+            <option>Expenses</option>
+            <option>Refunds</option>
+          </select>
+          <select class="filter-select">
+            <option>All Payment Methods</option>
+            <option>Credit Card</option>
+            <option>PayPal</option>
+            <option>Bank Transfer</option>
+          </select>
+          <input type="date" class="filter-select">
+          <input type="date" class="filter-select">
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Transaction ID</th>
+              <th>Type</th>
+              <th>Customer/Business</th>
+              <th>Amount</th>
+              <th>Payment Method</th>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#TXN-001</td>
+              <td><span class="badge success">Sale</span></td>
+              <td>John Doe</td>
+              <td>$250.00</td>
+              <td>Credit Card</td>
+              <td>2024-12-15</td>
+              <td><span class="badge success">Completed</span></td>
+            </tr>
+            <tr>
+              <td>#TXN-002</td>
+              <td><span class="badge danger">Expense</span></td>
+              <td>Supplier ABC</td>
+              <td>-$1,500.00</td>
+              <td>Bank Transfer</td>
+              <td>2024-12-14</td>
+              <td><span class="badge success">Completed</span></td>
+            </tr>
+            <tr>
+              <td>#TXN-003</td>
+              <td><span class="badge success">Sale</span></td>
+              <td>Jane Smith</td>
+              <td>$150.00</td>
+              <td>PayPal</td>
+              <td>2024-12-14</td>
+              <td><span class="badge success">Completed</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ANALYTICS/REPORTS SECTION -->
+      <section class="content-section" id="analytics-section" style="display: none;">
+        <div class="section-header">
+          <h1>Analytics & Reports</h1>
+          <div class="report-controls">
+            <select class="filter-select">
+              <option>Last 7 Days</option>
+              <option>Last 30 Days</option>
+              <option>Last 3 Months</option>
+              <option>Last Year</option>
+            </select>
+            <button class="btn-primary"><i class="uil uil-export"></i> Export Report</button>
+          </div>
+        </div>
+
+        <div class="analytics-cards">
+          <div class="analytics-card">
+            <h5>Revenue Trend</h5>
+            <canvas id="revenueChart"></canvas>
+          </div>
+          <div class="analytics-card">
+            <h5>Sales by Category</h5>
+            <canvas id="categoryChart"></canvas>
+          </div>
+          <div class="analytics-card">
+            <h5>Customer Growth</h5>
+            <canvas id="customerChart"></canvas>
+          </div>
+          <div class="analytics-card">
+            <h5>Top Products</h5>
+            <canvas id="topProductsChart"></canvas>
+          </div>
+        </div>
+
+        <div class="reports-table">
+          <h3>Detailed Reports</h3>
+          <table class="data-table">
             <thead>
               <tr>
-                <th>Products</th>
-                <th>Stock</th>
-                <th>Price</th>
-                <th>Sales</th>
-                <th>Earnings</th>
-                <th></th>
+                <th>Report Name</th>
+                <th>Period</th>
+                <th>Generated</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               <tr>
+                <td>Monthly Sales Report</td>
+                <td>November 2024</td>
+                <td>2024-12-01</td>
                 <td>
-                  <div>
-                    <img src="css/assets/download.jpeg" alt="">
-                  </div>
-                   <p>shoes</p>
+                  <button class="icon-btn"><i class="uil uil-download"></i></button>
+                  <button class="icon-btn"><i class="uil uil-eye"></i></button>
                 </td>
-                <td>200,400</td>
-                <td>$50.48</td>
-                <td>4,000</td>
-                <td>$10m+</td>
-                <td>+11.5%</td>
               </tr>
               <tr>
+                <td>Customer Analysis Report</td>
+                <td>Q4 2024</td>
+                <td>2024-12-10</td>
                 <td>
-                  <div>
-                    <img src="" alt="">
-                    <p>Your Products</p>
-                  </div>
+                  <button class="icon-btn"><i class="uil uil-download"></i></button>
+                  <button class="icon-btn"><i class="uil uil-eye"></i></button>
                 </td>
-                <td>200,400</td>
-                <td>$50.48</td>
-                <td>4,000</td>
-                <td>$10m+</td>
-                <td>+11.5%</td>
-              </tr>
-              <tr>
-                <td>
-                  <div>
-                    <img src="" alt="">
-                    <p>Your Products</p>
-                  </div>
-                </td>
-                <td>200,400</td>
-                <td>$50.48</td>
-                <td>4,000</td>
-                <td>$10m+</td>
-                <td>+11.5%</td>
-              </tr>
-              <tr>
-                <td>
-                  <div>
-                    <img src="" alt="">
-                    <p>Your Products</p>
-                  </div>
-                </td>
-                <td>200,400</td>
-                <td>$50.48</td>
-                <td>4,000</td>
-                <td>$10m+</td>
-                <td>+11.5%</td>
-              </tr>
-              <tr>
-                <td>
-                  <div>
-                    <img src="" alt="">
-                    <p>Your Products</p>
-                  </div>
-                </td>
-                <td>200,400</td>
-                <td>$50.48</td>
-                <td>4,000</td>
-                <td>$10m+</td>
-                <td>+11.5%</td>
               </tr>
             </tbody>
-
           </table>
-          <small>See more...</small>
-       
-        </section>
-
+        </div>
       </section>
-      <section class="main__right">
-        <article class="topCategories">
-          <header>
-            <h4>Top Categories</h4>
-            <i class="uil uil-ellipsis-h"></i>          
-          </header>
-          <canvas id="categories"></canvas>
-          <ul>
-            <li>
-              <div>
-                <span></span>
-                <h5>cars</h5>
-              </div>
-              <h6>60.4%</h6>
-            </li>
-            <li>
-              <div>
-                <span></span>
-                <h5>truks</h5>
-              </div>
-              <h6>60.4%</h6>
-            </li>
-            <li>
-              <div>
-                <span></span>
-                <h5>electronics</h5>
-              </div>
-              <h6>60.4%</h6>
-            </li>
-            <li>
-              <div>
-                <span></span>
-                <h5>others</h5>
-              </div>
-              <h6>60.4%</h6>
-            </li>
-          </ul>
-          <button>Veiw Details <i class="uil uil-external-link-alt"></i></button>
-        </article>
 
+      <!-- MARKETING SECTION -->
+      <section class="content-section" id="marketing-section" style="display: none;">
+        <div class="section-header">
+          <h1>Marketing Campaigns</h1>
+          <button class="btn-primary"><i class="uil uil-plus"></i> Create Campaign</button>
+        </div>
 
-        <article class="nextevents">
-          <header>
-            <h4>Upcoming Events</h4>
-            <i class="uil uil-ellipsis-h"></i> 
-          </header>
-          <div class="next__eventimage">
-            <img src="css/assets/download.jpeg" alt="">
+        <div class="marketing-stats">
+          <div class="stat-card">
+            <h5>Active Campaigns</h5>
+            <h2>12</h2>
           </div>
-          <ul>
-            <li>
-                <div class="Events__image">
-                  <img src="css/assets/download.jpeg" alt="">
-                </div>
-                <div>
-                  <h5>christmas</h5>
-                  <small></small>
-                </div>
-            </li>
-              <li>
-                <div class="Events__image">
-                  <img src="css/assets/download.jpeg" alt="">
-                </div>
-                <div>
-                  <h5>christmas</h5>
-                  <small></small>
-                </div>
-            </li>
-              <li>
-                <div class="Events__image">
-                  <img src="" alt="">
-                </div>
-                <div>
-                  <h5>christmas</h5>
-                  <small></small>
-                </div>
-            </li>
-          </ul>
-         <button>View Events  <i class="uil uil-external-link-alt"></i></button>
-        </article>
+          <div class="stat-card">
+            <h5>Total Reach</h5>
+            <h2>125K</h2>
+          </div>
+          <div class="stat-card">
+            <h5>Conversion Rate</h5>
+            <h2>3.2%</h2>
+          </div>
+          <div class="stat-card">
+            <h5>ROI</h5>
+            <h2>245%</h2>
+          </div>
+        </div>
+
+        <div class="campaigns-grid">
+          <div class="campaign-card">
+            <div class="campaign-header">
+              <h4>Christmas Sale 2024</h4>
+              <span class="badge success">Active</span>
+            </div>
+            <p>Holiday promotion campaign</p>
+            <div class="campaign-stats">
+              <div>
+                <small>Reach</small>
+                <strong>45,230</strong>
+              </div>
+              <div>
+                <small>Engagement</small>
+                <strong>12.5%</strong>
+              </div>
+              <div>
+                <small>Sales</strong>
+                  <strong>$25,450</strong>
+              </div>
+            </div>
+            <div class="campaign-actions">
+              <button class="btn-edit">Edit</button>
+              <button class="btn-view">View Details</button>
+            </div>
+          </div>
+          <div class="campaign-card">
+            <div class="campaign-header">
+              <h4>New Year Promotion</h4>
+              <span class="badge warning">Scheduled</span>
+            </div>
+            <p>New Year special offers</p>
+            <div class="campaign-stats">
+              <div>
+                <small>Starts</small>
+                <strong>Jan 1, 2025</strong>
+              </div>
+            </div>
+            <div class="campaign-actions">
+              <button class="btn-edit">Edit</button>
+              <button class="btn-view">View Details</button>
+            </div>
+          </div>
+        </div>
       </section>
+
+      <!-- SHIPPING/DELIVERY SECTION -->
+      <section class="content-section" id="shipping-section" style="display: none;">
+        <div class="section-header">
+          <h1>Shipping & Delivery</h1>
+          <button class="btn-primary"><i class="uil uil-plus"></i> Add Shipment</button>
+        </div>
+
+        <div class="shipping-stats">
+          <div class="stat-card">
+            <h5>Pending Shipments</h5>
+            <h2>45</h2>
+          </div>
+          <div class="stat-card">
+            <h5>In Transit</h5>
+            <h2>23</h2>
+          </div>
+          <div class="stat-card">
+            <h5>Delivered Today</h5>
+            <h2>12</h2>
+          </div>
+          <div class="stat-card">
+            <h5>On-Time Rate</h5>
+            <h2>94.5%</h2>
+          </div>
+        </div>
+
+        <div class="shipping-filters">
+          <select class="filter-select">
+            <option>All Shipments</option>
+            <option>Pending</option>
+            <option>In Transit</option>
+            <option>Delivered</option>
+            <option>Delayed</option>
+          </select>
+          <select class="filter-select">
+            <option>All Carriers</option>
+            <option>FedEx</option>
+            <option>UPS</option>
+            <option>DHL</option>
+          </select>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Tracking Number</th>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Carrier</th>
+              <th>Status</th>
+              <th>Estimated Delivery</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#TRK-001</td>
+              <td>#ORD-001</td>
+              <td>John Doe</td>
+              <td>FedEx</td>
+              <td><span class="badge info">In Transit</span></td>
+              <td>2024-12-18</td>
+              <td>
+                <button class="icon-btn"><i class="uil uil-eye"></i></button>
+                <button class="icon-btn"><i class="uil uil-edit"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td>#TRK-002</td>
+              <td>#ORD-002</td>
+              <td>Jane Smith</td>
+              <td>UPS</td>
+              <td><span class="badge success">Delivered</span></td>
+              <td>2024-12-15</td>
+              <td>
+                <button class="icon-btn"><i class="uil uil-eye"></i></button>
+                <button class="icon-btn"><i class="uil uil-edit"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </section>
-    
+
+      <!-- SUPPORT SECTION -->
+      <section class="content-section" id="support-section" style="display: none;">
+        <div class="section-header">
+          <h1>Customer Support</h1>
+          <div class="header-stats">
+            <div class="stat-card">
+              <h5>Open Tickets</h5>
+              <h2>23</h2>
+            </div>
+            <div class="stat-card">
+              <h5>Resolved Today</h5>
+              <h2>12</h2>
+            </div>
+            <div class="stat-card">
+              <h5>Avg Response Time</h5>
+              <h2>2.5h</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="support-filters">
+          <select class="filter-select">
+            <option>All Tickets</option>
+            <option>Open</option>
+            <option>In Progress</option>
+            <option>Resolved</option>
+            <option>Closed</option>
+          </select>
+          <select class="filter-select">
+            <option>All Priorities</option>
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+          </select>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Ticket ID</th>
+              <th>Customer</th>
+              <th>Subject</th>
+              <th>Priority</th>
+              <th>Status</th>
+              <th>Created</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#TKT-001</td>
+              <td>John Doe</td>
+              <td>Order not received</td>
+              <td><span class="badge danger">High</span></td>
+              <td><span class="badge warning">Open</span></td>
+              <td>2024-12-15</td>
+              <td>
+                <button class="icon-btn"><i class="uil uil-eye"></i></button>
+                <button class="icon-btn"><i class="uil uil-edit"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td>#TKT-002</td>
+              <td>Jane Smith</td>
+              <td>Product inquiry</td>
+              <td><span class="badge warning">Medium</span></td>
+              <td><span class="badge success">Resolved</span></td>
+              <td>2024-12-14</td>
+              <td>
+                <button class="icon-btn"><i class="uil uil-eye"></i></button>
+                <button class="icon-btn"><i class="uil uil-edit"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- SETTINGS SECTION -->
+      <section class="content-section" id="settings-section" style="display: none;">
+        <div class="section-header">
+          <h1>Settings</h1>
+        </div>
+
+        <div class="settings-container">
+          <div class="settings-tabs">
+            <button class="tab-btn active" data-tab="general">General</button>
+            <button class="tab-btn" data-tab="business">Business</button>
+            <button class="tab-btn" data-tab="notifications">Notifications</button>
+            <button class="tab-btn" data-tab="security">Security</button>
+          </div>
+
+          <div class="settings-content">
+            <div class="tab-content active" id="general-tab">
+              <h3>General Settings</h3>
+              <div class="setting-item">
+                <label>Business Name</label>
+                <input type="text" value="Profitix" class="setting-input">
+              </div>
+              <div class="setting-item">
+                <label>Email</label>
+                <input type="email" value="admin@profitix.com" class="setting-input">
+              </div>
+              <div class="setting-item">
+                <label>Currency</label>
+                <select class="setting-input">
+                  <option>USD ($)</option>
+                  <option>EUR (€)</option>
+                  <option>GBP (£)</option>
+                </select>
+              </div>
+              <div class="setting-item">
+                <label>Timezone</label>
+                <select class="setting-input">
+                  <option>UTC-5 (EST)</option>
+                  <option>UTC-8 (PST)</option>
+                  <option>UTC+0 (GMT)</option>
+                </select>
+              </div>
+              <button class="btn-primary">Save Changes</button>
+            </div>
+
+            <div class="tab-content" id="business-tab">
+              <h3>Business Information</h3>
+              <div class="setting-item">
+                <label>Business Type</label>
+                <select class="setting-input">
+                  <option>E-Commerce</option>
+                  <option>Retail</option>
+                  <option>Wholesale</option>
+                </select>
+              </div>
+              <div class="setting-item">
+                <label>Tax ID</label>
+                <input type="text" class="setting-input">
+              </div>
+              <div class="setting-item">
+                <label>Address</label>
+                <textarea class="setting-input" rows="3"></textarea>
+              </div>
+              <button class="btn-primary">Save Changes</button>
+            </div>
+
+            <div class="tab-content" id="notifications-tab">
+              <h3>Notification Preferences</h3>
+              <div class="setting-item">
+                <label>
+                  <input type="checkbox" checked> Email Notifications
+                </label>
+              </div>
+              <div class="setting-item">
+                <label>
+                  <input type="checkbox" checked> Order Updates
+                </label>
+              </div>
+              <div class="setting-item">
+                <label>
+                  <input type="checkbox"> Marketing Emails
+                </label>
+              </div>
+              <button class="btn-primary">Save Changes</button>
+            </div>
+
+            <div class="tab-content" id="security-tab">
+              <h3>Security Settings</h3>
+              <div class="setting-item">
+                <label>Current Password</label>
+                <input type="password" class="setting-input">
+              </div>
+              <div class="setting-item">
+                <label>New Password</label>
+                <input type="password" class="setting-input">
+              </div>
+              <div class="setting-item">
+                <label>Confirm New Password</label>
+                <input type="password" class="setting-input">
+              </div>
+              <button class="btn-primary">Update Password</button>
+            </div>
+          </div>
+        </div>
+      </section>
 
     </main>
-   </div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="./css/main.js"></script>
+  </div>
+  </div>
+  
+  <!-- Design Theme Switcher -->
+  <button class="theme-switcher-btn" id="designThemeSwitcher" title="Toggle Design Theme">
+    <i class="uil uil-palette"></i>
+  </button>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="./css/main.js"></script>
 </body>
+
 </html>
