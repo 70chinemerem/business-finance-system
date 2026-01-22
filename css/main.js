@@ -347,6 +347,11 @@ function showSection(sectionId) {
   if (sectionId === 'analytics') {
     setTimeout(initAnalyticsCharts, 100);
   }
+  
+  // Make tables responsive after section change
+  setTimeout(() => {
+    makeTablesResponsive();
+  }, 150);
 }
 
 // Restore saved section on page load
@@ -662,6 +667,36 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('Filter/Search applied:', input.value);
     });
   });
+  
+  // Make tables responsive for mobile
+  makeTablesResponsive();
+});
+
+// ===== Make Tables Responsive for Mobile =====
+function makeTablesResponsive() {
+  const tables = document.querySelectorAll('.data-table');
+  
+  tables.forEach(table => {
+    const headers = table.querySelectorAll('thead th');
+    const rows = table.querySelectorAll('tbody tr');
+    
+    headers.forEach((header, index) => {
+      const headerText = header.textContent.trim();
+      rows.forEach(row => {
+        const cell = row.querySelectorAll('td')[index];
+        if (cell) {
+          cell.setAttribute('data-label', headerText);
+        }
+      });
+    });
+  });
+}
+
+// Initialize tables on page load
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    makeTablesResponsive();
+  }, 500);
 });
 
 // ===== Initialize Analytics Charts (when analytics section is loaded) =====
