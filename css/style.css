@@ -3148,6 +3148,7 @@ body.enhanced-design .stat-card:hover {
     overflow-y: auto;
     /* enable vertical scroll */
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
 }
 
 .login-container::-webkit-scrollbar {
@@ -3155,10 +3156,17 @@ body.enhanced-design .stat-card:hover {
 }
 
 .login-container::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
     border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease;
+}
+
+.login-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2));
 }
 
 .login-container::-webkit-scrollbar-track {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
 }
