@@ -5,17 +5,7 @@ const MAIN_APP = document.getElementById('mainApp');
 
 // Check authentication on page load
 function checkAuthentication() {
-  // Check for logout parameter in URL
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('logout') === 'true') {
-    logout();
-    // Remove the logout parameter from URL
-    window.history.replaceState({}, document.title, window.location.pathname);
-    return;
-  }
-  
   const isAuthenticated = localStorage.getItem(AUTH_KEY) === 'true';
-  console.log('Authentication check:', isAuthenticated ? 'logged in' : 'not logged in');
   
   if (isAuthenticated) {
     showMainApp();
@@ -41,10 +31,8 @@ function showMainApp() {
 function login() {
   localStorage.setItem(AUTH_KEY, 'true');
   showMainApp();
-  // Initialize app after login
-  setTimeout(() => {
-    restoreSavedSection();
-  }, 100);
+  showSection('dashboard');
+  showLoginSuccessNotification();
 }
 
 function logout() {
@@ -57,15 +45,6 @@ function logout() {
 // Initialize authentication check
 checkAuthentication();
 
-// Add keyboard shortcut for testing (Ctrl+Shift+L to logout)
-document.addEventListener('keydown', (e) => {
-  if (e.ctrlKey && e.shiftKey && e.key === 'L') {
-    e.preventDefault();
-    logout();
-    alert('Logged out! Refresh the page to see login form.');
-  }
-});
-
 // ===== Login Form Handler =====
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
@@ -74,20 +53,14 @@ if (loginForm) {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     
-    console.log('Login attempt:', { email: email ? 'provided' : 'missing', password: password ? 'provided' : 'missing' });
-    
     // Simple validation (in production, validate with backend)
     if (email && password) {
-      console.log('Login successful, calling login()');
       // Simulate login (replace with actual API call)
       login();
     } else {
-      console.log('Login failed: missing email or password');
-      alert('Please enter both email and password');
+      showLoginErrorNotification('Please enter both email and password');
     }
   });
-} else {
-  console.error('Login form not found!');
 }
 
 // ===== Password Toggle =====
@@ -148,14 +121,14 @@ const sidebar = document.querySelector('.sidebar');
 
 sidebarOpenBtn.addEventListener('click', () => {
   sidebar.style.left = "0";
-  sidebarCloseBtn.style.display = "inline-block";
+  sidebarCloseBtn.style.display = "flex";
   sidebarOpenBtn.style.display = "none";
 });
 
 sidebarCloseBtn.addEventListener('click', () => {
   sidebar.style.left = "-100%";
   sidebarCloseBtn.style.display = "none";
-  sidebarOpenBtn.style.display = "inline-block";
+  sidebarOpenBtn.style.display = "flex";
 });
 
 // ===== Transactions Data =====
@@ -817,3 +790,57 @@ function initAnalyticsCharts() {
 }
 
 // Note: Analytics charts initialization is now handled in showSection function
+
+function showLoginSuccessNotification() {
+  const notification = document.createElement('div');
+  notification.className = 'login-notification success';
+  notification.innerHTML = `
+    <div class="notification-icon">
+      <i class="uil uil-check-circle"></i>
+    </div>
+    <div class="notification-content">
+      <h4>Welcome to Profitix!</h4>
+      <p>Login successful. Redirecting to dashboard...</p>
+    </div>
+    <button class="notification-close" onclick="this.parentElement.remove()">
+      <i class="uil uil-times"></i>
+    </button>
+  `;
+  
+  document.body.appendChild(notification);
+  
+  // Auto remove after 3 seconds
+  setTimeout(() => {
+    if (notification.parentElement) {
+      notification.remove();
+    }
+  }, 3000);
+}
+
+function showLoginErrorNotification(message) {
+  const notification = document.createElement('div');
+  notification.className = 'login-notification error';
+  notification.innerHTML = `
+    <div class="notification-icon">
+      <i class="uil uil-exclamation-triangle"></i>
+    </div>
+    <div class="notification-content">
+      <h4>Login Failed</h4>
+      <p>${message}</p>
+    </div>
+    <button class="notification-close" onclick="this.parentElement.remove()">
+      <i class="uil uil-times"></i>
+    </button>
+  `;
+  
+  document.body.appendChild(notification);
+  
+  // Auto remove after 4 seconds for errors
+  setTimeout(() => {
+    if (notification.parentElement) {
+      notification.remove();
+    }
+  }, 4000);
+}
+
+// Note: Analytics charts initialization is now handled in showSection function remove the ones i have not removed and give me so i can pase and identtify them for next time

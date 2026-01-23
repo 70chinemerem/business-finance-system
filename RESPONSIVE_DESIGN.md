@@ -293,4 +293,3 @@ Every section is now fully responsive and optimized for all screen sizes!
 **Test on different devices to see the responsive magic!** 🎉
 
 
-
